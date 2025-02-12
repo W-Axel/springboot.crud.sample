@@ -3,11 +3,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/employee_db
     username: employee_db_user
     password: employee_db_user
-    platform: POSTGRESQL
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+  sql:
+    init:
+      platform: POSTGRESQL
 
 #logging:
 #  level:

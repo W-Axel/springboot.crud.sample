@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A very sample Spring boot application running on port 8080 exposing a Spring Data REST interface for employee entities. Used for demo purposes.
+A very simple Spring boot application running on port 8080 exposing a Spring Data REST interface for employee entities. Used for demo purposes.
 
 ```
 curl http://localhost:8080/employees
@@ -35,6 +35,17 @@ docker run --name springboot.crud.sample -t \
 ddewaele/springboot.crud.sample
 ```
 
+## Environment varialbes
+
+You can override the DB connection using the following env vars.
+
+```
+SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/employee_db
+SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/employee_db
+SPRING_DATASOURCE_USERNAME=employee_db_user
+SPRING_DATASOURCE_PASSWORD=employee_db_user
+```
+
 You can also provide environment properties. For example if you want to run against a postgres DB, a specific profile is available:
 ```
 docker run --name springboot.crud.sample -t \
@@ -58,7 +69,7 @@ Swagger docs are available at http://localhost:8080/v2/api-docs
 ### Login to postgrs
 ```
 export PATH=$PATH:/Library/PostgreSQL/9.4/bin
-psql -U postgres
+psql -U postgres -h localhost
 ```
 ### Create the auth server DB
 ```
@@ -67,7 +78,7 @@ CREATE DATABASE employee_db OWNER employee_db_user;
 ```
 ### Verify that you can login
 ```
-psql -U employee_db_user -d employee_db
+psql -h localhost -U employee_db_user -d employee_db
 ```
 
 ### If you want to drop and re-create
