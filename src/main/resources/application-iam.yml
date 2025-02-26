@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:aws-wrapper:postgresql://aurora-sandbox.cluster-cwrruvmejag6.eu-central-1.rds.amazonaws.com/employee_db
+    driver-class-name: software.amazon.jdbc.Driver
+    username: employee_db
+    hikari:
+      data-source-properties:
+        wrapperPlugins: iam
+        iamRegion: eu-central-1
+      exception-override-class-name: software.amazon.jdbc.util.HikariCPSQLException
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
+  sql:
+    init:
+      platform: POSTGRESQL
