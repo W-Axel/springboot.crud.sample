@@ -5,7 +5,7 @@ spring:
     username: employee_db
     hikari:
       data-source-properties:
-        wrapperPlugins: iam
+        wrapperPlugins: iam,failover
         iamRegion: eu-central-1
       exception-override-class-name: software.amazon.jdbc.util.HikariCPSQLException
   jpa:
