@@ -5,6 +5,7 @@ spring:
       data-source-properties:
         wrapperPlugins: iam,failover
         iamRegion: eu-central-1
+        failoverMode: strict-reader
       exception-override-class-name: software.amazon.jdbc.util.HikariCPSQLException
   jpa:
     hibernate:
